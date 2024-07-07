@@ -19,23 +19,23 @@ data = {
     'Химия': [7, 6, 5, 4, 3, 7, 6, 5, 4, 3],
     'Биология': [6, 5, 4, 3, 2, 6, 5, 4, 3, 2],
 }
+
 df = pd.DataFrame(data)
+# проверяем что всё загружено
 print(df.head())
-print(f"Средняя оценка по Математике- {df['Математика'].mean()}")
-print(f"Медианная оценка по Математика - {df['Математика'].median()}")
-print(f"Средняя оценка по Истории - {df['История'].mean()}")
-print(f"Медианная оценка по Истории - {df['История'].median()}")
-print(f"Средняя оценка по Географии- {df['География'].mean()}")
-print(f"Медианная оценка по Географии - {df['География'].median()}")
-print(f"Средняя оценка по Физике - {df['Физика'].mean()}")
-print(f"Медианная оценка по Физике - {df['Физика'].median()}")
-print(f"Средняя оценка по Химии - {df['Химия'].mean()}")
-print(f"Медианная оценка по Химии - {df['Химия'].median()}")
 
-Q1_math = df['Математика'].quantile(0.25)
+subjects = ['Математика', 'История', 'География', 'Физика', 'Химия', 'Биология']
 
-Q3_math = df['Математика'].quantile(0.75)
+for subject in subjects:
+    mean_value = df[subject].mean()
+    median_value = df[subject].median()
+    std_value = df[subject].std()
+    Q1 = df[subject].quantile(0.25)
+    Q3 = df[subject].quantile(0.75)
+    IQR = Q3 - Q1
 
-print(f"по Математике Q1 {Q1_math}, Q3 {Q3_math}, IQR {Q3_math - Q1_math}")
-
-print(f"Стандартное отклонение по Математике - {df['Математика'].std()}")
+    print(f"\nОценки по предмету {subject}:")
+    print(f"\tСредняя оценка- {mean_value}")
+    print(f"\tМедианная оценка  - {median_value}")
+    print(f"\tСтандартное отклонение - {std_value}")
+    print(f"\t Q1 {Q1}, Q3 {Q3}, IQR {IQR}")
