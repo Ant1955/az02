@@ -22,7 +22,8 @@ data = {
 
 df = pd.DataFrame(data)
 # проверяем что всё загружено
-print(df.head())
+print(df.describe())
+print(f"\n{df.head()}")
 
 subjects = ['Математика', 'История', 'География', 'Физика', 'Химия', 'Биология']
 
